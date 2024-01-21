@@ -1,0 +1,15 @@
+<div class="commodity">
+  <img
+    class="commodity__photo"
+    [src]="housingLocation.imgUrl"
+    alt="{housingLocation.imgUrl}"
+  />
+  <h2 class="commodity__name">{{ housingLocation.name }}</h2>
+  <p class="commodity__description">
+    {{ housingLocation.description | descriptionLimit }} {{ housingLocation.description }}
+  </p>
+  <p class="commodity__price_uah"><b>Price USA:</b> {{ housingLocation.price }} <b> ₴ </b></p>
+	<p class="commodity__price_eur">
+		<b>Price EUR:</b> {{ (housingLocation.price | currencyConversion: exchangeRate).toFixed(2) }} <b> € </b>
+	</p>
+</div>

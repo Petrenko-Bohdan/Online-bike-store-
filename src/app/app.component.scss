@@ -1,0 +1,21 @@
+
+
+.footer {
+}
+.navigation__menu {
+  &_list {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+  }
+
+  &_link {
+		color: #000;
+    text-decoration: none;
+
+		&:hover{
+			color: var(--hover-color);
+			border-bottom: 1px solid var(--hover-color);
+		}
+  }
+}
