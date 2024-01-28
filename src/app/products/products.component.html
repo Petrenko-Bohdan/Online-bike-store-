@@ -1,3 +1,5 @@
 <div class="results">
-  <app-housing-location *ngFor="let bike of data" [housingLocation]="bike" [exchangeRate]="exchangeRate"></app-housing-location>
+  <div *ngFor="let bike of data; let i = index" [ngClass]="{ 'main-product': !i, 'sub-product': i }">
+    <app-housing-location [housingLocation]="bike" [exchangeRate]="exchangeRate" [discount]="bike.discount"></app-housing-location>
+  </div>
 </div>

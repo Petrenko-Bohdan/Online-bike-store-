@@ -1,4 +1,5 @@
-<div class="commodity">
+<div class="commodity" [style.border-color]="getDiscountColor()">
+	<p class="commodity__discount" [style.background-color]="getDiscountColor()">{{housingLocation.discount}}%</p>
   <img
     class="commodity__photo"
     [src]="housingLocation.imgUrl"
@@ -12,4 +13,5 @@
 	<p class="commodity__price_eur">
 		<b>Price EUR:</b> {{ (housingLocation.price | currencyConversion: exchangeRate).toFixed(2) }} <b> € </b>
 	</p>
+	<a [routerLink]="['/details-page', housingLocation.id]">Learn More</a>
 </div>

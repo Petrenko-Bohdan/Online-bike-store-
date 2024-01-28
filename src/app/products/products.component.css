@@ -1,8 +1,24 @@
 .results {
   display: grid;
-  column-gap: 14px;
+	padding: 50px;
+  column-gap: 30px;
   row-gap: 14px;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 400px));
+	grid-template-columns: repeat(auto-fill, minmax(calc(33.333% - 14px), 1fr));
   margin-top: 50px;
-  justify-content: space-around;
+	justify-content: space-around;	
+}
+
+.main-product {
+  width: 100%;
+  grid-column: span 3;
+	margin: 0 auto; 
+}
+
+.sub-product {
+  width: 100%;
+  grid-column: span 1;
+}
+
+a{
+	width: auto;
 }

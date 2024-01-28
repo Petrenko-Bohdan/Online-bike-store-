@@ -1,16 +1,19 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { HousingLocationComponent } from '../housing-location/housing-location.component';
-import { NgFor } from '@angular/common';
+import { CommonModule, NgClass, NgFor } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { DataService } from '../data.service';
 import { CurrencyService } from '../currency.service';
 
+
+
+
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [HousingLocationComponent, NgFor],
+  imports: [HousingLocationComponent, NgFor, NgClass, CommonModule],
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
 })
@@ -35,6 +38,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
 		.pipe(takeUntil(this.destroy$))
 		.subscribe((result)=>{
 			this.data = result
+
+			this.data.sort((a, b) => b.discount - a.discount);
 		});
 
 		this.data.forEach((product) => {

@@ -1,18 +1,32 @@
 .commodity {
 	box-sizing: border-box;
 	width: 100%;
-	background-color: azure;
+	height: 100%;
 	padding: 25px;
-	border: 2px solid #92BEAD;
-	border-radius: 15px;
+	border-radius: 15px; 
+	border: 5px solid red;
+	display: flex;
+	flex-direction: column;
 }
-.commodity__photo {
-	width: 100%;
+
+.commodity__discount{
+	max-width: 40px;
+	border-radius: 50%;
+	padding: 30px;
+	color: white;
+	font-size: 24px;
+	position: absolute;
+	margin: 0;
+}
+
+.commodity__photo {	
+	max-width: 100%;
 	height: 300px;
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
 }
-.commodity__name {
-}
+
 .commodity__description {
 	height: 100%;
-	overflow-y: scroll;
 }
