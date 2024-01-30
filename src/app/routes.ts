@@ -7,10 +7,10 @@ const routeConfig: Routes = [
 		path: '',
 		component: ProductsComponent,
 	},
-	{
-		path: 'details-page/:id',
-		component: DetailsPageComponent,
-	}
+	// {
+	// 	path: 'details-page/:id',
+	// 	component: DetailsPageComponent,
+	// }
 ];
 
 export default routeConfig;
