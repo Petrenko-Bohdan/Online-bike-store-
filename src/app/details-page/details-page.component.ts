@@ -1,24 +1,34 @@
-import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HousingLocation } from '../housinglocation';
 import { DataService } from '../data.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-details-page',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './details-page.component.html',
-  styleUrl: './details-page.component.css'
+  template: `
+    <article>
+      <section class="listing-description">
+        <h2 class="listing-heading">{{ housingLocation?.name }}</h2>
+      </section>
+    </article>
+  `,
+  styleUrls: ['./details-page.component.css']
 })
-
-export class DetailsPageComponent {
-	route: ActivatedRoute = inject(ActivatedRoute);
-  dataService = inject(DataService);
+export class DetailsPageComponent implements OnInit {
   housingLocation: HousingLocation | undefined;
 
-  constructor() {
+  constructor(
+    private route: ActivatedRoute,
+    private dataService: DataService
+  ) {}
+
+  ngOnInit(): void {
     const housingLocationId = Number(this.route.snapshot.params['id']);
-    // this.housingLocation = this.dataService.getHousingLocationById(housingLocationId);
+    
+    this.dataService.getProductById(housingLocationId)
+      .subscribe((location: HousingLocation) => {
+        this.housingLocation = location;
+      });
   }
 }
