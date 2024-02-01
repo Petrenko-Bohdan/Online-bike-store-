@@ -10,9 +10,8 @@ export class DescriptionLimitPipe implements PipeTransform {
   transform(description:string): string {
 		const maxCharacters = 35;
 		if (description.length > maxCharacters){
-			return description.substr(0, maxCharacters)+ '...';
+			return description.substring(0, maxCharacters)+ '...';
 		}
     return description;
   }
-
 }

@@ -1,17 +1,69 @@
-
-<div *ngFor="let housingLocation of data" class="commodity">
-	<p class="commodity__discount">{{housingLocation.discount}}%</p>
+<div class="details__page_container">
   <img
-    class="commodity__photo"
-    [src]="housingLocation.imgUrl"
+    [src]="housingLocation?.imgUrl"
     alt="{housingLocation.imgUrl}"
+    class="details__page_img"
   />
-  <h2 class="commodity__name">{{ housingLocation.name }}</h2>
-  <p class="commodity__description">
-    {{ housingLocation.description}} {{ housingLocation.description }}
-  </p>
-  <p class="commodity__price_uah"><b>Price USA:</b> {{ housingLocation.price }} <b> ₴ </b></p>
-	<p class="commodity__price_eur">
-		<b>Price EUR:</b> {{ (housingLocation.price) }} <b> € </b>
-	</p>
+  <div class="details__page_data">
+    <h3 class="details__page_name">{{ housingLocation?.name }}</h3>
+    <p class="details__page_description">{{ housingLocation?.description }}</p>
+    <div class="details__page_price">
+      <p class="page_price details__page_price-euro">
+        € {{ housingLocation?.price }}
+      </p>
+      <p class="page_price details__page_price-usd">
+        $ {{ housingLocation?.price }}
+      </p>
+    </div>
+    <div class="details__page_ranking">
+      <p class="ranking__stars"></p>
+      <div class="ranking__links">
+        <a href="" class="ranking__read-reviews_link reviews_link"
+          >Read reviews</a
+        >
+        <a href="" class="ranking__write-reviews_link reviews_link"
+          >Write a Review</a
+        >
+      </div>
+    </div>
+    <form class="details__page_color" action="">
+      <label class="details__page_color-label label__object" for="color"
+        >Color</label
+      >
+      <select
+        class="details__page_color-select select__object"
+        name="color"
+        id=""
+      >
+        <option value="housingLocation?.color">
+          {{ housingLocation?.color }}
+        </option>
+      </select>
+    </form>
+    <form class="details__page_size" action="">
+      <label class="label__object" for="size">Size</label>
+      <select class="select__object" name="size" id="">
+        <option value="housingLocation?.color">
+          {{ housingLocation?.size }}
+        </option>
+      </select>
+    </form>
+    <p class="details__page_availbility label__object">Availbility:</p>
+    <div class="details__page_quantity">
+      <label class="quantity__label label__object" for="quantity"
+        >Quantity</label
+      >
+      <input class="select__object" type="text" id="quantity" />
+    </div>
+    <div class="details__page_buttons">
+      <button class="details__page_add-to-card">
+        <i class="material-symbols-outlined add-to-card__icon">&#xe8cc;</i>
+        <p class="add-to-card__name">Add to page</p>
+      </button>
+      <button class="details__page_add-to-wish-list">
+        <i class="material-symbols-outlined"> checklist </i>
+        <p class="add-to-wish-list__name">Add to Wish List</p>
+      </button>
+    </div>
+  </div>
 </div>

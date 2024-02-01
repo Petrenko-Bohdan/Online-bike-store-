@@ -3,12 +3,8 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { HousingLocationComponent } from '../housing-location/housing-location.component';
 import { CommonModule, NgClass, NgFor } from '@angular/common';
-import { Subscription } from 'rxjs';
 import { DataService } from '../data.service';
 import { CurrencyService } from '../currency.service';
-
-
-
 
 @Component({
   selector: 'app-products',
@@ -23,8 +19,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   data: any[]=[];
 	private destroy$ = new Subject<void>();
-
-	
 
   constructor(private dataService: DataService, private currencyService: CurrencyService) {}
 

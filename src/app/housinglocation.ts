@@ -6,7 +6,7 @@ export interface HousingLocation {
 	main: boolean;
 	shop: string;
 	name: string;
-	description: string;
+	description: string|any;
 	shipping: string|null ;
 	discountUntil: string;
 	isNew: boolean;

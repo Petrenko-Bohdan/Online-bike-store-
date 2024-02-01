@@ -1,4 +1,4 @@
-import { HousingLocation } from "../app/housinglocation";
+import { HousingLocation } from '../app/housinglocation';
 
 export const data: HousingLocation[] = [
   {
