@@ -4,6 +4,7 @@ import { HousingLocation } from '../housinglocation';
 import { DataService } from '../data.service';
 import { DescriptionLimitPipe } from '../description-limit.pipe';
 
+
 @Component({
   selector: 'app-details-page',
 	standalone: true,
