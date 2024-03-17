@@ -1,79 +1,103 @@
 .details__page_container {
+  display: flex;
+  margin-top: 50px;
+  gap: 30px;
+}
+.left_part-of-page{
+	max-width: 45%;
 	display: flex;
-	align-items: center;
-	margin-top: 50px;
-	gap: 30px;
+	flex-direction: column;
+  align-items: center; 
+	margin: auto 0;
 }
 .details__page_img {
-	width: 50%;
+  width: 90%;
+	min-height: 300px;
+}
+.list-of-products-color{
+	text-align: center;
+	margin: 0 auto;
 }
 .details__page_data {
-	max-width: 45%;
+  width: 45%;
 }
 .details__page_name {
-	font-size: 36px;
-	margin: 0;
+  font-size: 36px;
+  margin: 0;
 }
 .details__page_description {
+	padding: 5px;
+	overflow: hidden;
+	/* height:  100px; */
+	transition: max-height 0.3s
 }
-.details__page_price{
-	font-size: 18px;
-	font-weight: 800;
+.description__text{
+	height: 50px;
+	margin: 0;
 }
-.page_price{
-	margin: 5px auto;
+.description__button{
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	box-sizing: border-box;	
+}
+.description__button:hover{
+	color: #4794AC;
+	border-bottom: #4794AC solid 2px ;
+}
+.details__page_price {
+	padding-top: 15px;	
+  font-size: 18px;
+  font-weight: 800;
+}
+.page_price {
+  margin: 0 auto;
 }
 .details__page_price-euro {
 }
 .details__page_price-usd {
 }
 .details__page_ranking {
-	margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 .ranking__stars {
 }
 .ranking__links {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
-.ranking__links {
-	display: flex;
-	justify-content: space-between;
+.ranking__read-reviews_link {
 }
-.ranking__read-reviews_link{	
+.ranking__write-reviews_link {
 }
-.ranking__write-reviews_link{}
-.reviews_link:hover  {
-	color: var(--hover-color);
+.reviews_link:hover {
+  color: var(--hover-color);
 }
 .details__page_color {
-	margin: 15px auto;
+  margin: 15px auto;
 }
-.details__page_color-label{
-
+.details__page_color-label {
 }
-.details__page_color-select{
-
+.details__page_color-select {
 }
-.label__object{
-	font-size: 18px;
-	font-weight: 800;
+.label__object {
+  font-size: 18px;
+  font-weight: 800;
 }
-.select__object{
-	margin-top: 5px;
-	width: 100%;
+.select__object {
+  margin-top: 5px;
+  width: 100%;
 }
 .details__page_size {
 }
 .details__page_availbility {
 }
 .details__page_quantity {
-	width: 30%;
-	display: flex;
-	flex-direction: column;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
 }
-.quantity__label{
-	
+.quantity__label {
 }
 .details__page_buttons {
 }

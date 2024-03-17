@@ -1,25 +1,31 @@
 <div class="details__page_container">
-  <img
+	<div class="left_part-of-page">
+		<img
     [src]="housingLocation?.imgUrl"
     alt="{housingLocation.imgUrl}"
     class="details__page_img"
   />
+	<p class="list-of-products-color">{{ housingLocation?.color }}</p>
+	</div>
   <div class="details__page_data">
     <h3 class="details__page_name">{{ housingLocation?.name }}</h3>
-    <p class="details__page_description">{{ housingLocation?.description }}</p>
-    <div class="details__page_price">
-      <p class="page_price details__page_price-euro">
-        € {{ housingLocation?.price }}
-      </p>
+		<div class="details__page_description">
+			<p class="description__text" *ngIf="!showFullDescription">{{ housingLocation.description | descriptionLimitForProductPage}} <button class="description__button" *ngIf="!showFullDescription" (click)="toggleFullDescription()">Read more</button></p>
+			<div *ngIf="showFullDescription">
+				<p class="description__text">{{ housingLocation.description }} <button class="description__button" *ngIf="showFullDescription" (click)="toggleSmallDescription()">Show short description</button></p>
+			</div>		
+		</div> 
+		<div class="details__page_price">
       <p class="page_price details__page_price-usd">
         $ {{ housingLocation?.price }}
       </p>
     </div>
     <div class="details__page_ranking">
-      <p class="ranking__stars"></p>
+			<app-stars-rating [rating]="getAverageRating()"></app-stars-rating>
+			<a href="">{{numReviews}}</a>
       <div class="ranking__links">
         <a href="" class="ranking__read-reviews_link reviews_link"
-          >Read reviews</a
+          >Read {{numReviews}} reviews</a
         >
         <a href="" class="ranking__write-reviews_link reviews_link"
           >Write a Review</a
@@ -35,25 +41,25 @@
         name="color"
         id=""
       >
-        <option value="housingLocation?.color">
-          {{ housingLocation?.color }}
+        <option *ngFor="let color of housingLocation?.color; let i = index" [value]="color">
+          {{ color }}
         </option>
       </select>
     </form>
     <form class="details__page_size" action="">
       <label class="label__object" for="size">Size</label>
       <select class="select__object" name="size" id="">
-        <option value="housingLocation?.color">
-          {{ housingLocation?.size }}
+        <option *ngFor="let size of housingLocation?.size; let i=index" [value]="size">
+          {{ size }}
         </option>
       </select>
     </form>
-    <p class="details__page_availbility label__object">Availbility:</p>
+    <p class="details__page_availbility label__object">Availbility: Please select options</p>
     <div class="details__page_quantity">
       <label class="quantity__label label__object" for="quantity"
         >Quantity</label
       >
-      <input class="select__object" type="text" id="quantity" />
+      <input class="select__object" type="text" id="quantity" placeholder="Please write quantity" />
     </div>
     <div class="details__page_buttons">
       <button class="details__page_add-to-card">
