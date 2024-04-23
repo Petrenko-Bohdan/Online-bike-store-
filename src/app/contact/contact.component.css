@@ -1,0 +1,23 @@
+.wrapper {
+  display: grid;
+  width: 100%;
+  min-height: 100vh;
+  padding: 15px;
+  margin: 0 auto;
+  text-align: center;
+}
+.contact {
+}
+.contact__header {
+  font-size: 30px;
+}
+.contact__footer {
+  display: flex;
+	flex-direction: column;
+  align-items: center;
+	justify-content: center;
+}
+.contact__phone {
+}
+.contact__mail {
+}
