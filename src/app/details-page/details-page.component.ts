@@ -9,6 +9,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CurrencyConversionPipe } from '../currency-conversion.pipe';
 import { RouterModule } from '@angular/router';
 import { DescriptionLimitForProductPagePipe } from '../description-limit-for-product-page.pipe';
+import { CartMaintenanceService } from '../cart-maintenance.service';
 
 @Component({
   selector: 'app-details-page',
@@ -25,7 +26,8 @@ export class DetailsPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private dataService: DataService
+    private dataService: DataService,
+		private cartMaintenanceService: CartMaintenanceService
   ) {}
 
   ngOnInit(): void {
@@ -48,13 +50,22 @@ export class DetailsPageComponent implements OnInit {
     return totalRating / this.housingLocation.review.length;
   }
 
-
-
 	toggleFullDescription() {
 		this.showFullDescription = true;
 	}
 
 	toggleSmallDescription() {
 		this.showFullDescription = false;
+	}
+
+	addToCart() {
+		const productToAdd = {
+			id: this.housingLocation.id,
+			name: this.housingLocation.name,
+			price: this.housingLocation.price,
+			img: this.housingLocation.imgUrl
+		};
+	
+		this.cartMaintenanceService.addToCart = productToAdd;
 	}
 }

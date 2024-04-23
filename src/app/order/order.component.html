@@ -1,0 +1,161 @@
+<div class="multiStepForm">
+  <div class="step__container">
+    <form class="step__form" [formGroup]="form">
+      <div *ngIf="isCurrentStep(1)">
+        <div class="cartContainer" formGroupName="products">
+					<ol class="products__list">
+						<li class="product__item" *ngFor="let item of cartItems">
+							<div class="product__container">
+								<img [src]="item.img" alt="{item.name}" class="product__img" />
+								<div class="product__content">
+									<h4 class="product__tittle">
+										{{ item.name }}
+									</h4>
+									<p class="product__price">$ {{ item.price }}</p>
+								</div>
+								<button
+									class="material-symbols-outlined"
+									(click)="deleteFromCart(item)"
+								>
+									<i class="material-symbols-outlined"> &#xe5cd;</i>
+								</button>
+							</div>
+						</li>
+					</ol>
+				</div>
+      </div>
+      <div class="delivery__address" *ngIf="isCurrentStep(2)">
+        <h2 class="delivery__address_tittle">Address</h2>
+        <div class="delivery__address_content" formGroupName="address">
+          <div class="country">
+            <label for="country__label"> Country </label>
+            <input
+              class="form__input"
+              id="country"
+              type="text"
+              formControlName="country"
+            />
+          </div>
+          <div class="city">
+            <label for="city__label">City</label>
+            <input
+              class="form__input"
+              id="city"
+              type="text"
+              formControlName="city"
+            />
+          </div>
+          <div class="street">
+            <label for="street__label"> Street </label>
+            <input
+              class="form__input"
+              id="street"
+              type="text"
+              formControlName="street"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="delivery__paymentMethod" *ngIf="isCurrentStep(3)">
+        <h2 class="delivery__paymentMethod_tittle">Payment Method</h2>
+        <div class="delivery__paymentMethod_content">
+          <select formControlName="paymentMethod">
+            <option value="card">Card</option>
+            <option value="paypal">PayPal</option>
+            <option value="cash">Cash</option>
+          </select>
+        </div>
+      </div>
+      <div class="delivery__data" *ngIf="isCurrentStep(4)">
+        <h2 class="delivery__data_tittle">Delivery Data</h2>
+        <div class="delivery__data_content" formGroupName="deliveryData">
+          <div class="delivery__today">
+            <input
+              id="today"
+              type="radio"
+              [value]="'today'"
+              formControlName="delivery"
+            />
+            <label for="today">Today</label>
+          </div>
+					<div class="delivety__tomorrow">
+						<input
+            id="tomorrow"
+            type="radio"
+            [value]="'tomorrow'"
+            formControlName="data"
+            formControlName="delivery"
+          />
+          <label for="tomorrow">Tomorrow</label>
+					</div>
+					<div class="select__date">
+						<label for="customDate">Select a date</label>
+          <input
+            type="date"
+            [value]="'today'"
+            id="customDate"
+            formControlName="delivery"
+            formControlName="data"
+          />
+					</div>      
+        </div>
+      </div>
+      <div class="delivery__summarizeInfo" *ngIf="isCurrentStep(5)">
+        <h2 class="delivery__summarizeInfo_tittle">Summarize Info</h2>
+        <div class="delivery__summarizeInfo_content">
+          <div>Products: <div class="cartContainer" formGroupName="products">
+						<ol class="products__list">
+							<li class="product__item" *ngFor="let item of cartItems">
+								<div class="product__container">
+									<img [src]="item.img" alt="{item.name}" class="product__img" />
+									<div class="product__content">
+										<h4 class="product__tittle">
+											{{ item.name }}
+										</h4>
+										<p class="product__price">$ {{ item.price }}</p>
+									</div>
+									<button
+										class="material-symbols-outlined"
+										(click)="deleteFromCart(item)"
+									>
+										<i class="material-symbols-outlined"> &#xe5cd;</i>
+									</button>
+								</div>
+							</li>
+						</ol>
+					</div></div>
+          <p>Country: {{ form.get("address")?.get("country")?.value }}</p>
+          <p>City: {{ form.get("address")?.get("city")?.value }}</p>
+          <p>Street: {{ form.get("address")?.get("street")?.value }}</p>
+          <p>Payment method: {{ form.get("paymentMethod")?.value }}</p>
+          <p>
+            Delivery Data: {{ form.get("deliveryData")?.value.data }}
+            {{ form.get("deliveryData")?.value.delivery }}
+          </p>
+        </div>
+      </div>
+      
+    </form>
+		<div class="form__navigation_button">
+			<button type="button" [disabled]="currentStep === 1" (click)="onBack()">
+				Back
+			</button>
+
+			<button
+				type="button"
+				[disabled]="currentStep === steps.length"
+				(click)="onNext()"
+			>
+				Next
+			</button>
+
+			<button
+				type="submit"
+				*ngIf="currentStep === steps.length"
+				(click)="onSubmit()"
+			>
+				Submit
+			</button>
+		</div>
+  </div>
+</div>
