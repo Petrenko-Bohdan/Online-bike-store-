@@ -3,21 +3,36 @@
   method="post"
   id="contactForm"
   class="contactForm"
-  (ngSubmit)="onSubmit()"
+  novalidate
+  #userForm="ngForm"
 >
-  <div class="contactForm__container contactForm__item">
+  <div class="contactForm__container">
     <div class="contactForm__firstName contactForm__item">
       <label for="firstName" class="contactPage__firstName_label">Name:</label>
       <input
         type="text"
         id="firstName"
+        #firstName="ngModel"
         class="contact__form_input"
         name="firstName"
         tabindex="1"
         [(ngModel)]="contacts.firstName"
-        required
         placeholder="Your name"
+        minlength="2"
+        required
       />
+      <div
+        class="contactPage__firstName_alert contactPage_alert"
+        *ngIf="
+          (firstName.invalid && (firstName.touched || firstName.dirty)) ||
+          isFormSubmitted
+        "
+      >
+        <span *ngIf="firstName.errors?.['required']">This Is Required</span>
+        <span *ngIf="firstName.errors?.['minlength']"
+          >Minimum length - 2 characters
+        </span>
+      </div>
     </div>
     <div class="contactPage__shureName contactForm__item">
       <label for="shureName" class="contactPage__shureName_label"
@@ -26,34 +41,80 @@
       <input
         type="text"
         id="shureName"
+        #shureName="ngModel"
         class="contact__form_input"
+        name="shureName"
+        minlength="2"
         tabindex="2"
         [(ngModel)]="contacts.sureName"
         required
       />
+      <div
+        class="contactPage__shureName_alert contactPage_alert"
+        *ngIf="
+          (shureName.invalid && (shureName.touched || shureName.dirty)) ||
+          isFormSubmitted
+        "
+      >
+        <span *ngIf="shureName.errors?.['required']">This Is Required</span>
+        <span *ngIf="shureName.errors?.['minlength']"
+          >Minimum length - 2 characters</span
+        >
+      </div>
     </div>
     <div class="contactPage__email contactForm__item">
       <label for="email">Email:</label>
       <input
         type="email"
         id="email"
+        name="email"
+        #email="ngModel"
         class="contact__form_input"
         [(ngModel)]="contacts.email"
+        pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
         required
       />
+      <div
+        class="contactPage__email_alert contactPage_alert"
+        *ngIf="
+          (email.invalid && (email.touched || email.dirty)) || isFormSubmitted
+        "
+      >
+        <span *ngIf="email.errors?.['required']">Required</span>
+        <span *ngIf="email.errors?.['pattern']">Email Id is Not Proper</span>
+      </div>
     </div>
     <div class="contactPage__description contactForm__item">
       <label for="description"> Description: </label>
       <textarea
         name="description"
         id="description"
+        #description="ngModel"
         class="contactPage__description_input contact__form_input"
         cols="30"
         rows="3"
         [(ngModel)]="contacts.description"
         required
       ></textarea>
+      <div
+        class="contactPage__description_alert"
+        *ngIf="
+          (description.invalid && (description.touched || description.dirty)) ||
+          isFormSubmitted
+        "
+      >
+        <span *ngIf="description.errors?.['required']">This Is Required</span>
+      </div>
     </div>
-    <button type="submit">Send</button>
+    <div>
+      <button
+        class="btn btn-primary"
+        [disabled]="!userForm.form.valid"
+        type="button"
+        (click)="onSubmit(userForm)"
+      >
+        Submit form
+      </button>
+    </div>
   </div>
 </form>

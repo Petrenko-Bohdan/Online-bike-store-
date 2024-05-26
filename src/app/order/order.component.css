@@ -20,15 +20,22 @@ text-align: center;
 	padding: 15px;
 	border-radius: 50px;
   position: relative;
+	z-index: 1;
 }
 
 .step__form{
-	max-height: 500px;
+	max-height: 550px;
 	overflow-y: auto;
+}
+.delivery__input_item{
+	height: 45px;
+}
+.delivery__form_allert{
+	margin: 5px;
 }
 
 .delivery__address {
-	
+	height: 100%;
 }
 .delivery__address_tittle {
 	padding-bottom: 15px;
@@ -40,11 +47,13 @@ text-align: center;
 	width: 100%;
 }
 
+
 .delivery__paymentMethod {
 }
 .delivery__paymentMethod_tittle {
 }
 .delivery__paymentMethod_content {
+	margin-top: 15px;
 }
 .delivery__data {
 }
@@ -104,4 +113,13 @@ text-align: center;
   'wght' 400,
   'GRAD' 0,
   'opsz' 24
+}
+.from__thank-you{
+	position: absolute;
+	top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+	width: 100%;
+	background-color: rgba(159, 207, 229, 0.5);
+	z-index: 2;
 }

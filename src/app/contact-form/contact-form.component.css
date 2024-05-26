@@ -2,7 +2,7 @@
   display: inline;
 }
 .contactForm__container {
-  padding: 15px;
+  padding: 15px 15px;
   border-radius: 50px;
   border: solid 2px rgb(173, 137, 137);
   background-color: rgba(255, 216, 115, 0.3);
@@ -10,7 +10,10 @@
   margin: auto;
 }
 .contactForm__item{
-	padding: 15px 15px;
+	height: 90px;
+}
+.contactPage_alert{
+	padding: 10px;
 }
 .contactForm__firstName {
 }
@@ -21,6 +24,11 @@
 	height: 30px;
 	width: 100%;
 }
+
+.contactPage__firstName_alert{
+	
+}
+
 .contactPage__shureName {
 }
 .contactPage__shureName_label {
@@ -28,6 +36,7 @@
 .contactPage__email {
 }
 .contactPage__description {
+	height: 180px;
 }
 .contactPage__description_input{
 	height: 100px;
